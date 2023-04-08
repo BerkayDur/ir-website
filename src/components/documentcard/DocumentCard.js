@@ -7,12 +7,13 @@ function DocumentCard(props){
 
     function handleInput(e){
         e.preventDefault();
-        props.changeFeedback(props.id,e.target.value, props.rank, props.score);
+        props.changeFeedback(props.id,e.target.value, props.rank, props.score, props.session_id);
     }
 
 
     return (<div className="documentcard">
                 <h3 className="title">{props.title}</h3>
+                <p className="score"><span className="score_title">Score:</span> {props.score}</p>
                 <p className="content">{props.children.slice(props.title.length)}</p>
                 <a href={props.url}>Read Full Article!</a>
                 <div className="feedbackcontainer">

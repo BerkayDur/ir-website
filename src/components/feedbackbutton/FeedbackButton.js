@@ -24,19 +24,19 @@ function FeedbackButton(props){
 
     async function handleClick(e){
         e.preventDefault();
-        console.log(props.children);
+        // console.log(props.children);
         if (formChecker(props.children)){
             //  Post to here
             setMode("post");
+            setServerCode(undefined);
             setLoading(true);
             let res = await fetch("https://gigglesearch.ngrok.app/feedback", 
                         {method:"POST", mode:"cors", 
                         headers:{"Content-Type":"application/json"},
                         body: JSON.stringify(props.children)})
             let data = await res.json();
-            let parsed = await JSON.parse(data)
-            console.log(parsed)
-            setServerCode(parsed);
+            // let parsed = await JSON.parse(data)
+            setServerCode(data === "Feedback received");
             setLoading(false);
             
         }
@@ -45,9 +45,6 @@ function FeedbackButton(props){
         }
     }
 
-    useEffect(()=>{
-        console.log(loading);
-    },[setLoading])
 
     useEffect(()=>{
         if (mode === "error"){
@@ -56,7 +53,16 @@ function FeedbackButton(props){
         else if (mode === "post"){
             alert("Sending feedback to server!\n\nThank you!!");
         }
-    },[mode])
+
+        if (serverCode === true){
+            alert("Feedback received by server!");
+        }
+        else if (serverCode === false){
+            alert("Feedback not received by server. Contact Iqbal!");
+        }
+    },[serverCode, mode])
+
+
 
     return feedbackMode === false ? false : (
     <div className="feedbackbutton-container" onClick={handleClick}>Send feedback</div>);

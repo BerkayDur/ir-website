@@ -4,9 +4,6 @@ import { useState, useEffect } from "react";
 import feedbackModeContext from "../../contexts/feedbackModeContext";
 import DocumentContainer from "../documentcontainer/DocumentContainer";
 import FeedbackButton from "../feedbackbutton/FeedbackButton";
-import { nanoid } from "nanoid";
-
-const session_id = nanoid(5);
 
 async function getDocumentsFromQuery(query,model, setLoading, setDocuments){
     // GET documents from DB.
@@ -37,7 +34,7 @@ function Main(){
     const [documents, setDocuments] = useState(false);
     const [feedback, setFeedback] = useState(false);
 
-    function changeFeedback(doc_id,userScore, rank, score){
+    function changeFeedback(doc_id,userScore, rank, score, session_id){
         const new_ = {...feedback};
 
         //done: doc_id, userScore, query, algorithm, rank, score, session_id
@@ -45,10 +42,12 @@ function Main(){
         setFeedback(new_);
     }
 
-
+    useEffect(()=>{
+        console.dir(documents);
+    },[documents])
 
     useEffect(()=>{
-        const nextURL = "http://localhost:3000/search?query=" + query + "&model=" + model;
+        const nextURL = "https://ir-web-two.vercel.app/search?query=" + query + "&model=" + model;
         const nextTitle = "Title";
         const nextState = {};
         window.history.pushState(nextState, nextTitle, nextURL);

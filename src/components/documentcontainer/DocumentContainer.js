@@ -11,7 +11,7 @@ function DocumentContainer(props){
             let document = props.documents[i]
             rend[i-1] = (<DocumentCard key={document["doc_id"]} title={document["header"]} id={document["doc_id"]} 
                         changeFeedback={props.changeFeedback} feedback={props.feedback} score={document["score"]} 
-                        rank={document["rank"]} url={document["url"]}>
+                        rank={document["rank"]} url={document["url"]} session_id={document["session_id"]}>
                                 {document["text"]}
                         </DocumentCard>);
         }
