@@ -42,17 +42,13 @@ function Main(){
         setFeedback(new_);
     }
 
-    useEffect(()=>{
-        console.dir(documents);
-    },[documents])
+    // useEffect(()=>{
+    //     const nextURL = "https://ir-web-two.vercel.app/search?query=" + query + "&model=" + model;
+    //     const nextTitle = "Title";
+    //     const nextState = {};
+    //     window.history.pushState(nextState, nextTitle, nextURL);
 
-    useEffect(()=>{
-        const nextURL = "https://ir-web-two.vercel.app/search?query=" + query + "&model=" + model;
-        const nextTitle = "Title";
-        const nextState = {};
-        window.history.pushState(nextState, nextTitle, nextURL);
-
-    },[query, model])
+    // },[query, model])
 
     useEffect(()=>{
         if (query==="" || model===""){
