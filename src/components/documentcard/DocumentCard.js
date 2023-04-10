@@ -15,7 +15,7 @@ function DocumentCard(props){
                 <h3 className="title">{props.title}</h3>
                 <p className="score"><span className="score_title">Score:</span> {props.score}</p>
                 <p className="content">{props.children.slice(props.title.length)}</p>
-                <a href={props.url}>Read Full Article!</a>
+                <a href={props.url} target="_blank">Read Full Article!</a>
                 <div className="feedbackcontainer">
                     {
                         feedbackMode === false?false: (

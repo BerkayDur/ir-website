@@ -5,10 +5,20 @@
     border: 1px solid black;
     border-radius: 1em;
     padding: 10px 40px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
 }
 
 .feedbackcontainer{
+    margin-top: 10px;
+    margin-bottom: 10px;
     height: 50px;
+    align-self: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
 }
 
 .title{
